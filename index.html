@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1220" />
+
+  <title>Blue FM — Audiobook App (APK Download)</title>
+  <meta name="description" content="Blue FM audiobook app ka latest Android APK direct download karo. Latest version, size aur changelog ke saath." />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111b2e;
+      --text:#eaf0ff;
+      --muted:#a9b6d3;
+      --primary:#3b82f6;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 16px 40px rgba(0,0,0,.45);
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 20% 10%, rgba(59,130,246,.20), transparent 55%),
+        radial-gradient(900px 500px at 80% 20%, rgba(99,102,241,.18), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a{ color:#cfe0ff; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    /* Mobile-first */
+    .container{
+      max-width: 760px;
+      margin:0 auto;
+      padding: 16px;
+      padding-left: max(16px, env(safe-area-inset-left));
+      padding-right: max(16px, env(safe-area-inset-right));
+    }
+
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(180deg, rgba(11,18,32,.92), rgba(11,18,32,.70));
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      padding: 12px 16px;
+      padding-left: max(16px, env(safe-area-inset-left));
+      padding-right: max(16px, env(safe-area-inset-right));
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .logo{
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(59,130,246,.95), rgba(99,102,241,.95));
+      display:grid; place-items:center;
+      font-weight: 900;
+      letter-spacing:.3px;
+      box-shadow: 0 10px 30px rgba(59,130,246,.18);
+      flex: 0 0 auto;
+    }
+    .brand-text{ min-width:0; }
+    .brand-text .title{ font-weight: 950; font-size: 16px; line-height: 1.05; }
+    .brand-text .sub{ color: var(--muted); font-size: 12px; margin-top: 2px; white-space: nowrap; overflow:hidden; text-overflow: ellipsis; }
+
+    .nav{
+      display:flex;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+    .nav a{
+      color: var(--muted);
+      font-size: 13px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.06);
+      background: rgba(255,255,255,.03);
+    }
+    .nav a:hover{ text-decoration:none; color: var(--text); border-color: rgba(255,255,255,.14); }
+
+    h1{
+      margin: 12px 0 8px;
+      font-size: 32px;
+      line-height: 1.08;
+      letter-spacing: -.3px;
+    }
+    .lead{
+      margin:0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .badges{
+      margin-top: 12px;
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .badge{
+      font-size: 12px;
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      padding: 8px 10px;
+      border-radius: 999px;
+    }
+
+    .card{
+      margin-top: 14px;
+      background: rgba(17,27,46,.82);
+      border:1px solid var(--border);
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .label{ color: var(--muted); font-size: 12px; }
+    .value{ font-weight: 950; font-size: 16px; margin-top: 2px; }
+    .muted{ color: var(--muted); }
+    .small{ margin-top: 8px; font-size: 13px; color: var(--muted); line-height: 1.35; }
+
+    .cta{
+      display:grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 13px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      color: var(--text);
+      font-weight: 950;
+      user-select:none;
+      text-decoration:none;
+    }
+    .btn:hover{ text-decoration:none; border-color: rgba(255,255,255,.18); }
+
+    .btn-primary{
+      background: linear-gradient(135deg, rgba(59,130,246,.98), rgba(99,102,241,.98));
+      border: none;
+    }
+    .btn-ghost{ background: rgba(255,255,255,.04); }
+
+    .section{ margin-top: 18px; }
+    .section h2{ margin: 0 0 10px; font-size: 18px; letter-spacing: -.2px; }
+
+    .features{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .feature{
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      padding: 12px;
+    }
+    .feature .ft{ font-weight: 950; margin-bottom: 4px; }
+    .feature .fd{ color: var(--muted); font-size: 14px; line-height: 1.45; }
+
+    /* Screenshot scroller (phone friendly) */
+    .shots{
+      display:flex;
+      gap: 10px;
+      overflow:auto;
+      padding-bottom: 6px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .shot{
+      flex: 0 0 78%;
+      max-width: 320px;
+      border-radius: 18px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      scroll-snap-align: start;
+    }
+    .shot img{
+      width:100%;
+      height: 380px;
+      object-fit: cover;
+      display:block;
+    }
+    .shot .cap{ padding: 10px 12px; color: var(--muted); font-size: 13px; }
+
+    details{
+      margin-top: 10px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding: 10px 12px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight: 950;
+      color: #d6e4ff;
+      list-style: none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details > div{ margin-top: 10px; color: var(--muted); line-height:1.5; }
+
+    .footer{
+      margin-top: 20px;
+      padding: 18px 0 88px; /* space for bottom bar */
+      border-top: 1px solid rgba(255,255,255,.06);
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    /* Floating support buttons */
+    .float-stack{
+      position: fixed;
+      right: max(14px, env(safe-area-inset-right));
+      bottom: calc(74px + env(safe-area-inset-bottom)); /* above bottom bar */
+      display: grid;
+      gap: 10px;
+      z-index: 60;
+    }
+    .float-btn{
+      padding: 12px 14px;
+      border-radius: 999px;
+      font-weight: 950;
+      border: 1px solid rgba(0,0,0,.18);
+      box-shadow: 0 16px 40px rgba(0,0,0,.40);
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-width: 120px;
+    }
+    .wa{ background: #22c55e; color: #06150c; }
+    .ig{ background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4); color: #0b0b12; }
+    .float-btn:hover{ text-decoration:none; filter: brightness(1.03); }
+
+    /* Bottom download bar */
+    .bottom-bar{
+      position: fixed;
+      left: 0; right: 0;
+      bottom: 0;
+      z-index: 70;
+      background: linear-gradient(180deg, rgba(11,18,32,.0), rgba(11,18,32,.72) 22%, rgba(11,18,32,.92));
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding:
+        10px
+        max(14px, env(safe-area-inset-right))
+        calc(10px + env(safe-area-inset-bottom))
+        max(14px, env(safe-area-inset-left));
+    }
+    .bottom-inner{
+      max-width: 760px;
+      margin: 0 auto;
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .bottom-meta{
+      min-width: 0;
+    }
+    .bottom-meta .t{
+      font-weight: 950;
+      font-size: 13px;
+      line-height: 1.1;
+    }
+    .bottom-meta .s{
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 3px;
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+      max-width: 44vw;
+    }
+    .bottom-actions{
+      display:flex;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+    .btn-mini{
+      padding: 12px 12px;
+      border-radius: 14px;
+      font-weight: 950;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-width: 110px;
+    }
+    .btn-mini.primary{
+      background: linear-gradient(135deg, rgba(59,130,246,.98), rgba(99,102,241,.98));
+      border: none;
+      min-width: 140px;
+    }
+    .btn-mini:hover{ text-decoration:none; }
+
+    @media (min-width: 920px){
+      .container{ max-width: 980px; }
+      .bottom-inner{ max-width: 980px; }
+      h1{ font-size: 38px; }
+      .features{ grid-template-columns: 1fr 1fr; }
+      .shot{ flex-basis: 320px; }
+      .shot img{ height: 420px; }
+      .bottom-meta .s{ max-width: 520px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="Blue FM Home">
+        <div class="logo">BF</div>
+        <div class="brand-text">
+          <div class="title">Blue FM</div>
+          <div class="sub">Audiobook App • APK Download</div>
+        </div>
+      </a>
+
+      <div class="nav">
+        <a href="#features">Features</a>
+        <a href="#screens">Shots</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="container" id="top">
+    <h1>Blue FM ka latest APK yahin se download karo.</h1>
+    <p class="lead">
+      Ye website phone ke liye optimize hai. Neeche “Download” se direct APK milega.
+    </p>
+
+    <div class="badges">
+      <span class="badge" id="badgeVersion">Version: —</span>
+      <span class="badge" id="badgeUpdated">Updated: —</span>
+      <span class="badge" id="badgeSize">APK size: —</span>
+    </div>
+
+    <div class="card">
+      <div class="label">Download</div>
+      <div class="value">Blue FM (Android APK)</div>
+      <div class="small" id="downloadStatus">Latest release detect ho rahi hai…</div>
+
+      <div class="cta">
+        <a class="btn btn-primary" id="downloadBtn" href="#" rel="noopener">Download APK</a>
+        <a class="btn btn-ghost" id="directLink" href="#" rel="noopener">Direct link</a>
+      </div>
+    </div>
+
+    <section class="section" id="whatsnew">
+      <h2>What’s new</h2>
+      <div class="card">
+        <div class="muted" id="releaseTitle">Release notes load ho rahi hain…</div>
+        <div class="small" id="releaseNotes" style="margin-top:10px; line-height:1.55;"></div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <h2>Features</h2>
+      <div class="features">
+        <div class="feature"><div class="ft">Offline Listening</div><div class="fd">Audiobooks download karke offline suno.</div></div>
+        <div class="feature"><div class="ft">Continue Listening</div><div class="fd">Jahan chhoda tha wahan se resume.</div></div>
+        <div class="feature"><div class="ft">Fast & Lightweight</div><div class="fd">Simple UI, smooth experience.</div></div>
+        <div class="feature"><div class="ft">Search & Categories</div><div class="fd">Books ko easily find aur browse karo.</div></div>
+      </div>
+    </section>
+
+    <section class="section" id="screens">
+      <h2>Screenshots</h2>
+      <p class="small">In images ko baad me apne real screenshots links se replace kar dena.</p>
+
+      <div class="shots">
+        <div class="shot">
+          <img src="https://dummyimage.com/900x1600/111b2e/a9b6d3.png&text=Screenshot+1" alt="Blue FM screenshot 1">
+          <div class="cap">Home</div>
+        </div>
+        <div class="shot">
+          <img src="https://dummyimage.com/900x1600/111b2e/a9b6d3.png&text=Screenshot+2" alt="Blue FM screenshot 2">
+          <div class="cap">Player</div>
+        </div>
+        <div class="shot">
+          <img src="https://dummyimage.com/900x1600/111b2e/a9b6d3.png&text=Screenshot+3" alt="Blue FM screenshot 3">
+          <div class="cap">Categories</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <h2>FAQ</h2>
+      <details>
+        <summary>Download button kaam nahi kar raha?</summary>
+        <div>“Direct link” try karo. Agar GitHub API load na ho, tab bhi fallback link se download ho jayega.</div>
+      </details>
+      <details>
+        <summary>Support kaise milega?</summary>
+        <div>WhatsApp ya Instagram se message kar do. Buttons screen pe dikh rahe hain.</div>
+      </details>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> Blue FM</div>
+      <div>
+        <a id="igFooter" href="#" target="_blank" rel="noopener">Instagram</a>
+        <span class="muted"> • </span>
+        <a id="waFooter" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Floating support -->
+  <div class="float-stack" aria-label="Support buttons">
+    <a class="float-btn wa" id="waBtn" href="#" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="float-btn ig" id="igBtn" href="#" target="_blank" rel="noopener">Instagram</a>
+  </div>
+
+  <!-- Bottom download bar -->
+  <div class="bottom-bar" role="region" aria-label="Quick download bar">
+    <div class="bottom-inner">
+      <div class="bottom-meta">
+        <div class="t">Blue FM APK</div>
+        <div class="s" id="bottomSub">Latest version loading…</div>
+      </div>
+      <div class="bottom-actions">
+        <a class="btn-mini" id="bottomDirect" href="#" rel="noopener">Direct</a>
+        <a class="btn-mini primary" id="bottomDownload" href="#" rel="noopener">Download</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /**
+     * ✅ CONFIG (bas itna set kar do)
+     */
+    const CONFIG = {
+      // GitHub repo jahan website ka code hoga
+      githubOwner: "<USERNAME>",  // e.g. "rahul123"
+      githubRepo: "<REPO>",       // e.g. "bluefm-site"
+
+      // APK asset ka preferred name (Releases me)
+      preferredApkAssetName: "BlueFM.apk",
+
+      // Fallback direct download URL (API fail ho to bhi)
+      fallbackApkUrl: "https://github.com/<USERNAME>/<REPO>/releases/latest/download/BlueFM.apk",
+
+      // Support links
+      whatsappNumberE164: "91XXXXXXXXXX",     // e.g. 919876543210
+      whatsappMessage: "Hi! Blue FM app me help chahiye.",
+      instagramProfileUrl: "https://instagram.com/YOUR_USERNAME"
+    };
+
+    const $ = (id) => document.getElementById(id);
+
+    function formatDate(iso) {
+      try {
+        const d = new Date(iso);
+        return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "2-digit" });
+      } catch { return "—"; }
+    }
+
+    function formatMB(bytes) {
+      if (!Number.isFinite(bytes)) return "—";
+      const mb = bytes / (1024 * 1024);
+      return `${mb.toFixed(1)} MB`;
+    }
+
+    function escapeHtml(s) {
+      return String(s ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
+    }
+
+    function renderReleaseNotes(text) {
+      const safe = escapeHtml(text || "");
+      const withLinks = safe.replace(
+        /(https?:\/\/[^\s]+)/g,
+        (m) => `<a href="${m}" target="_blank" rel="noopener">${m}</a>`
+      );
+      return withLinks.replaceAll("\n", "<br>");
+    }
+
+    function setDownloadLinks(url) {
+      const ids = ["downloadBtn", "directLink", "bottomDownload", "bottomDirect"];
+      for (const id of ids) $(id).href = url;
+
+      const name = CONFIG.preferredApkAssetName || "BlueFM.apk";
+      $("downloadBtn").setAttribute("download", name);
+      $("bottomDownload").setAttribute("download", name);
+    }
+
+    function initSupport() {
+      const msg = encodeURIComponent(CONFIG.whatsappMessage || "Hi!");
+      const num = String(CONFIG.whatsappNumberE164 || "").replace(/\D/g, "");
+      const waUrl = num ? `https://wa.me/${num}?text=${msg}` : `https://wa.me/?text=${msg}`;
+
+      const igUrl = CONFIG.instagramProfileUrl || "https://instagram.com/";
+
+      $("waBtn").href = waUrl;
+      $("waFooter").href = waUrl;
+
+      $("igBtn").href = igUrl;
+      $("igFooter").href = igUrl;
+    }
+
+    async function loadLatestRelease() {
+      // Fallback pe site turant ready
+      setDownloadLinks(CONFIG.fallbackApkUrl);
+      $("downloadStatus").textContent = "Direct download ready.";
+      $("bottomSub").textContent = "Using fallback link…";
+
+      const apiUrl = `https://api.github.com/repos/${CONFIG.githubOwner}/${CONFIG.githubRepo}/releases/latest`;
+
+      try {
+        const res = await fetch(apiUrl, { headers: { "Accept": "application/vnd.github+json" } });
+        if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
+
+        const release = await res.json();
+        const tag = release.tag_name || "—";
+        const published = release.published_at ? formatDate(release.published_at) : "—";
+
+        const assets = Array.isArray(release.assets) ? release.assets : [];
+        const preferred = CONFIG.preferredApkAssetName;
+
+        const apkAsset =
+          assets.find(a => a?.name === preferred) ||
+          assets.find(a => (a?.name || "").toLowerCase().endsWith(".apk")) ||
+          null;
+
+        const apkUrl = apkAsset?.browser_download_url || CONFIG.fallbackApkUrl;
+        const apkSize = apkAsset?.size ? formatMB(apkAsset.size) : "—";
+
+        $("badgeVersion").textContent = `Version: ${tag}`;
+        $("badgeUpdated").textContent = `Updated: ${published}`;
+        $("badgeSize").textContent = `APK size: ${apkSize}`;
+
+        setDownloadLinks(apkUrl);
+
+        const title = release.name ? `${release.name} (${tag})` : `Release ${tag}`;
+        $("releaseTitle").textContent = title;
+        $("releaseNotes").innerHTML = renderReleaseNotes(release.body || "No release notes provided.");
+
+        $("downloadStatus").textContent = apkAsset
+          ? `Latest APK: ${apkAsset.name}`
+          : "Latest release found (APK asset not detected, using fallback link).";
+
+        $("bottomSub").textContent = `Latest: ${tag} • ${published} • ${apkSize}`;
+      } catch (e) {
+        $("releaseTitle").textContent = "Release notes unavailable";
+        $("releaseNotes").textContent = "Abhi latest release info load nahi hua. Fallback link se download kar sakte ho.";
+        $("downloadStatus").textContent = "GitHub API load nahi ho paya. Fallback download link use ho raha hai.";
+        $("bottomSub").textContent = "Fallback download link active";
+      }
+    }
+
+    // Init
+    $("year").textContent = String(new Date().getFullYear());
+    initSupport();
+    loadLatestRelease();
+  </script>
+
+  <!-- Docs:
+    GitHub Pages: https://docs.github.com/en/pages
+    GitHub Releases: https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases
+    Latest release API: https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-the-latest-release
+  -->
+</body>
+</html>
