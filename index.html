@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#0b1220" />
 
-  <title>Blue FM — Audiobook App (APK Download)</title>
-  <meta name="description" content="Blue FM audiobook app ka latest Android APK direct download karo. Latest version, size aur changelog ke saath." />
+  <title>Blue FM — APK Download</title>
+  <meta name="description" content="Blue FM audiobook app ka latest Android APK direct download karo." />
 
   <style>
     :root{
@@ -18,7 +18,6 @@
       --border:rgba(255,255,255,.10);
       --shadow: 0 16px 40px rgba(0,0,0,.45);
     }
-
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
     body{
@@ -32,11 +31,9 @@
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
-
     a{ color:#cfe0ff; text-decoration:none; }
     a:hover{ text-decoration:underline; }
 
-    /* Mobile-first */
     .container{
       max-width: 760px;
       margin:0 auto;
@@ -53,7 +50,6 @@
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255,255,255,.06);
     }
-
     .topbar-inner{
       display:flex;
       align-items:center;
@@ -63,14 +59,12 @@
       padding-left: max(16px, env(safe-area-inset-left));
       padding-right: max(16px, env(safe-area-inset-right));
     }
-
     .brand{
       display:flex;
       align-items:center;
       gap: 10px;
       min-width: 0;
     }
-
     .logo{
       width: 40px; height: 40px;
       border-radius: 12px;
@@ -140,7 +134,6 @@
 
     .label{ color: var(--muted); font-size: 12px; }
     .value{ font-weight: 950; font-size: 16px; margin-top: 2px; }
-    .muted{ color: var(--muted); }
     .small{ margin-top: 8px; font-size: 13px; color: var(--muted); line-height: 1.35; }
 
     .cta{
@@ -153,7 +146,6 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      gap: 10px;
       padding: 13px 14px;
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,.12);
@@ -163,7 +155,6 @@
       text-decoration:none;
     }
     .btn:hover{ text-decoration:none; border-color: rgba(255,255,255,.18); }
-
     .btn-primary{
       background: linear-gradient(135deg, rgba(59,130,246,.98), rgba(99,102,241,.98));
       border: none;
@@ -187,7 +178,6 @@
     .feature .ft{ font-weight: 950; margin-bottom: 4px; }
     .feature .fd{ color: var(--muted); font-size: 14px; line-height: 1.45; }
 
-    /* Screenshot scroller (phone friendly) */
     .shots{
       display:flex;
       gap: 10px;
@@ -231,7 +221,7 @@
 
     .footer{
       margin-top: 20px;
-      padding: 18px 0 88px; /* space for bottom bar */
+      padding: 18px 0 88px;
       border-top: 1px solid rgba(255,255,255,.06);
       color: var(--muted);
       font-size: 13px;
@@ -246,7 +236,7 @@
     .float-stack{
       position: fixed;
       right: max(14px, env(safe-area-inset-right));
-      bottom: calc(74px + env(safe-area-inset-bottom)); /* above bottom bar */
+      bottom: calc(74px + env(safe-area-inset-bottom));
       display: grid;
       gap: 10px;
       z-index: 60;
@@ -264,7 +254,11 @@
       min-width: 120px;
     }
     .wa{ background: #22c55e; color: #06150c; }
-    .ig{ background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4); color: #0b0b12; }
+    .ig{
+      background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4);
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0,0,0,.25);
+    }
     .float-btn:hover{ text-decoration:none; filter: brightness(1.03); }
 
     /* Bottom download bar */
@@ -290,14 +284,8 @@
       align-items:center;
       justify-content:space-between;
     }
-    .bottom-meta{
-      min-width: 0;
-    }
-    .bottom-meta .t{
-      font-weight: 950;
-      font-size: 13px;
-      line-height: 1.1;
-    }
+    .bottom-meta{ min-width: 0; }
+    .bottom-meta .t{ font-weight: 950; font-size: 13px; line-height: 1.1; }
     .bottom-meta .s{
       color: var(--muted);
       font-size: 12px;
@@ -365,12 +353,10 @@
 
   <main class="container" id="top">
     <h1>Blue FM ka latest APK yahin se download karo.</h1>
-    <p class="lead">
-      Ye website phone ke liye optimize hai. Neeche “Download” se direct APK milega.
-    </p>
+    <p class="lead">Download button touch karte hi direct APK download start ho jayega.</p>
 
     <div class="badges">
-      <span class="badge" id="badgeVersion">Version: —</span>
+      <span class="badge" id="badgeVersion">Version: v0.1.0</span>
       <span class="badge" id="badgeUpdated">Updated: —</span>
       <span class="badge" id="badgeSize">APK size: —</span>
     </div>
@@ -378,19 +364,20 @@
     <div class="card">
       <div class="label">Download</div>
       <div class="value">Blue FM (Android APK)</div>
-      <div class="small" id="downloadStatus">Latest release detect ho rahi hai…</div>
+      <div class="small" id="downloadStatus">Download ready.</div>
 
       <div class="cta">
-        <a class="btn btn-primary" id="downloadBtn" href="#" rel="noopener">Download APK</a>
-        <a class="btn btn-ghost" id="directLink" href="#" rel="noopener">Direct link</a>
+        <a class="btn btn-primary" id="downloadBtn" href="#">Download APK</a>
+        <a class="btn btn-ghost" id="directLink" href="#">Direct link</a>
       </div>
+      <div class="small" id="linkHint"></div>
     </div>
 
     <section class="section" id="whatsnew">
       <h2>What’s new</h2>
       <div class="card">
-        <div class="muted" id="releaseTitle">Release notes load ho rahi hain…</div>
-        <div class="small" id="releaseNotes" style="margin-top:10px; line-height:1.55;"></div>
+        <div class="small" id="releaseTitle">v0.1.0</div>
+        <div class="small" id="releaseNotes" style="margin-top:10px; line-height:1.55;">—</div>
       </div>
     </section>
 
@@ -406,7 +393,7 @@
 
     <section class="section" id="screens">
       <h2>Screenshots</h2>
-      <p class="small">In images ko baad me apne real screenshots links se replace kar dena.</p>
+      <p class="small">In images ko apne real screenshots links se replace kar dena.</p>
 
       <div class="shots">
         <div class="shot">
@@ -427,37 +414,35 @@
     <section class="section" id="faq">
       <h2>FAQ</h2>
       <details>
-        <summary>Download button kaam nahi kar raha?</summary>
-        <div>“Direct link” try karo. Agar GitHub API load na ho, tab bhi fallback link se download ho jayega.</div>
+        <summary>Download start nahi ho raha?</summary>
+        <div>“Direct link” try karo. Same APK file hai.</div>
       </details>
       <details>
         <summary>Support kaise milega?</summary>
-        <div>WhatsApp ya Instagram se message kar do. Buttons screen pe dikh rahe hain.</div>
+        <div>WhatsApp ya Instagram button se message kar do.</div>
       </details>
     </section>
 
     <footer class="footer">
       <div>© <span id="year"></span> Blue FM</div>
       <div>
-        <a id="igFooter" href="#" target="_blank" rel="noopener">Instagram</a>
-        <span class="muted"> • </span>
-        <a id="waFooter" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        <a id="igFooter" href="#" rel="noopener">Instagram</a>
+        <span> • </span>
+        <a id="waFooter" href="#" rel="noopener">WhatsApp</a>
       </div>
     </footer>
   </main>
 
-  <!-- Floating support -->
   <div class="float-stack" aria-label="Support buttons">
-    <a class="float-btn wa" id="waBtn" href="#" target="_blank" rel="noopener">WhatsApp</a>
-    <a class="float-btn ig" id="igBtn" href="#" target="_blank" rel="noopener">Instagram</a>
+    <a class="float-btn wa" id="waBtn" href="#" rel="noopener">WhatsApp</a>
+    <a class="float-btn ig" id="igBtn" href="#" rel="noopener">Instagram</a>
   </div>
 
-  <!-- Bottom download bar -->
   <div class="bottom-bar" role="region" aria-label="Quick download bar">
     <div class="bottom-inner">
       <div class="bottom-meta">
         <div class="t">Blue FM APK</div>
-        <div class="s" id="bottomSub">Latest version loading…</div>
+        <div class="s" id="bottomSub">Tap Download</div>
       </div>
       <div class="bottom-actions">
         <a class="btn-mini" id="bottomDirect" href="#" rel="noopener">Direct</a>
@@ -468,26 +453,53 @@
 
   <script>
     /**
-     * ✅ CONFIG (bas itna set kar do)
+     * ✅ UPDATED (your links)
+     * Repo: bluefmtts/bluefm-
+     * Release: v0.1.0
+     * Asset: app-0.1.apk
      */
     const CONFIG = {
-      // GitHub repo jahan website ka code hoga
-      githubOwner: "<USERNAME>",  // e.g. "rahul123"
-      githubRepo: "<REPO>",       // e.g. "bluefm-site"
+      // Use LATEST (future-proof). If you want fixed v0.1.0 only, swap to downloadUrlFixed.
+      downloadUrlLatest: "https://github.com/bluefmtts/bluefm-/releases/latest/download/app-0.1.apk",
+      downloadUrlFixed:  "https://github.com/bluefmtts/bluefm-/releases/download/v0.1.0/app-0.1.apk",
+      assetFileName: "app-0.1.apk",
 
-      // APK asset ka preferred name (Releases me)
-      preferredApkAssetName: "BlueFM.apk",
+      // Optional: release info (badges + notes)
+      githubOwner: "bluefmtts",
+      githubRepo: "bluefm-",
 
-      // Fallback direct download URL (API fail ho to bhi)
-      fallbackApkUrl: "https://github.com/<USERNAME>/<REPO>/releases/latest/download/BlueFM.apk",
-
-      // Support links
-      whatsappNumberE164: "91XXXXXXXXXX",     // e.g. 919876543210
+      // Support
+      whatsappNumberE164: "91XXXXXXXXXX", // apna number yahan
       whatsappMessage: "Hi! Blue FM app me help chahiye.",
-      instagramProfileUrl: "https://instagram.com/YOUR_USERNAME"
+      instagramProfileUrl: "https://www.instagram.com/bluefm_official?igsh=MzZnYnE0ajk1Z2xs"
     };
 
     const $ = (id) => document.getElementById(id);
+
+    function setDownloadLinks(url) {
+      const ids = ["downloadBtn", "directLink", "bottomDownload", "bottomDirect"];
+      for (const id of ids) {
+        const el = $(id);
+        el.href = url;
+        // Avoid new tab behavior
+        el.removeAttribute("target");
+      }
+      // download attr is usually ignored cross-site, but doesn't hurt
+      $("downloadBtn").setAttribute("download", CONFIG.assetFileName);
+      $("bottomDownload").setAttribute("download", CONFIG.assetFileName);
+    }
+
+    function initSupport() {
+      const msg = encodeURIComponent(CONFIG.whatsappMessage || "Hi!");
+      const num = String(CONFIG.whatsappNumberE164 || "").replace(/\D/g, "");
+      const waUrl = num ? `https://wa.me/${num}?text=${msg}` : `https://wa.me/?text=${msg}`;
+
+      $("waBtn").href = waUrl;
+      $("waFooter").href = waUrl;
+
+      $("igBtn").href = CONFIG.instagramProfileUrl;
+      $("igFooter").href = CONFIG.instagramProfileUrl;
+    }
 
     function formatDate(iso) {
       try {
@@ -495,20 +507,16 @@
         return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "2-digit" });
       } catch { return "—"; }
     }
-
     function formatMB(bytes) {
       if (!Number.isFinite(bytes)) return "—";
-      const mb = bytes / (1024 * 1024);
-      return `${mb.toFixed(1)} MB`;
+      return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
     }
-
     function escapeHtml(s) {
       return String(s ?? "")
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
         .replaceAll(">", "&gt;");
     }
-
     function renderReleaseNotes(text) {
       const safe = escapeHtml(text || "");
       const withLinks = safe.replace(
@@ -518,89 +526,48 @@
       return withLinks.replaceAll("\n", "<br>");
     }
 
-    function setDownloadLinks(url) {
-      const ids = ["downloadBtn", "directLink", "bottomDownload", "bottomDirect"];
-      for (const id of ids) $(id).href = url;
-
-      const name = CONFIG.preferredApkAssetName || "BlueFM.apk";
-      $("downloadBtn").setAttribute("download", name);
-      $("bottomDownload").setAttribute("download", name);
-    }
-
-    function initSupport() {
-      const msg = encodeURIComponent(CONFIG.whatsappMessage || "Hi!");
-      const num = String(CONFIG.whatsappNumberE164 || "").replace(/\D/g, "");
-      const waUrl = num ? `https://wa.me/${num}?text=${msg}` : `https://wa.me/?text=${msg}`;
-
-      const igUrl = CONFIG.instagramProfileUrl || "https://instagram.com/";
-
-      $("waBtn").href = waUrl;
-      $("waFooter").href = waUrl;
-
-      $("igBtn").href = igUrl;
-      $("igFooter").href = igUrl;
-    }
-
-    async function loadLatestRelease() {
-      // Fallback pe site turant ready
-      setDownloadLinks(CONFIG.fallbackApkUrl);
-      $("downloadStatus").textContent = "Direct download ready.";
-      $("bottomSub").textContent = "Using fallback link…";
-
-      const apiUrl = `https://api.github.com/repos/${CONFIG.githubOwner}/${CONFIG.githubRepo}/releases/latest`;
+    async function loadReleaseInfo() {
+      // Always keep direct download working even if API fails
+      setDownloadLinks(CONFIG.downloadUrlLatest);
+      $("linkHint").textContent = "Direct download link set.";
+      $("bottomSub").textContent = "Tap Download to start";
 
       try {
+        const apiUrl = `https://api.github.com/repos/${CONFIG.githubOwner}/${CONFIG.githubRepo}/releases/latest`;
         const res = await fetch(apiUrl, { headers: { "Accept": "application/vnd.github+json" } });
-        if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
-
+        if (!res.ok) throw new Error(String(res.status));
         const release = await res.json();
+
         const tag = release.tag_name || "—";
         const published = release.published_at ? formatDate(release.published_at) : "—";
 
         const assets = Array.isArray(release.assets) ? release.assets : [];
-        const preferred = CONFIG.preferredApkAssetName;
+        const apk = assets.find(a => a?.name === CONFIG.assetFileName) ||
+                    assets.find(a => (a?.name || "").toLowerCase().endsWith(".apk")) ||
+                    null;
 
-        const apkAsset =
-          assets.find(a => a?.name === preferred) ||
-          assets.find(a => (a?.name || "").toLowerCase().endsWith(".apk")) ||
-          null;
-
-        const apkUrl = apkAsset?.browser_download_url || CONFIG.fallbackApkUrl;
-        const apkSize = apkAsset?.size ? formatMB(apkAsset.size) : "—";
+        const size = apk?.size ? formatMB(apk.size) : "—";
 
         $("badgeVersion").textContent = `Version: ${tag}`;
         $("badgeUpdated").textContent = `Updated: ${published}`;
-        $("badgeSize").textContent = `APK size: ${apkSize}`;
+        $("badgeSize").textContent = `APK size: ${size}`;
 
-        setDownloadLinks(apkUrl);
+        $("releaseTitle").textContent = release.name ? `${release.name} (${tag})` : tag;
+        $("releaseNotes").innerHTML = renderReleaseNotes(release.body || "—");
 
-        const title = release.name ? `${release.name} (${tag})` : `Release ${tag}`;
-        $("releaseTitle").textContent = title;
-        $("releaseNotes").innerHTML = renderReleaseNotes(release.body || "No release notes provided.");
+        // If API gives exact asset URL, use it (still direct download)
+        if (apk?.browser_download_url) setDownloadLinks(apk.browser_download_url);
 
-        $("downloadStatus").textContent = apkAsset
-          ? `Latest APK: ${apkAsset.name}`
-          : "Latest release found (APK asset not detected, using fallback link).";
-
-        $("bottomSub").textContent = `Latest: ${tag} • ${published} • ${apkSize}`;
-      } catch (e) {
-        $("releaseTitle").textContent = "Release notes unavailable";
-        $("releaseNotes").textContent = "Abhi latest release info load nahi hua. Fallback link se download kar sakte ho.";
-        $("downloadStatus").textContent = "GitHub API load nahi ho paya. Fallback download link use ho raha hai.";
-        $("bottomSub").textContent = "Fallback download link active";
+        $("bottomSub").textContent = `Latest: ${tag} • ${published} • ${size}`;
+      } catch {
+        // keep direct download
       }
     }
 
     // Init
     $("year").textContent = String(new Date().getFullYear());
     initSupport();
-    loadLatestRelease();
+    loadReleaseInfo();
   </script>
-
-  <!-- Docs:
-    GitHub Pages: https://docs.github.com/en/pages
-    GitHub Releases: https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases
-    Latest release API: https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#get-the-latest-release
-  -->
 </body>
 </html>
