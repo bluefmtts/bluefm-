@@ -232,7 +232,6 @@
       justify-content:space-between;
     }
 
-    /* Floating support buttons */
     .float-stack{
       position: fixed;
       right: max(14px, env(safe-area-inset-right));
@@ -261,7 +260,6 @@
     }
     .float-btn:hover{ text-decoration:none; filter: brightness(1.03); }
 
-    /* Bottom download bar */
     .bottom-bar{
       position: fixed;
       left: 0; right: 0;
@@ -339,7 +337,7 @@
         <div class="logo">BF</div>
         <div class="brand-text">
           <div class="title">Blue FM</div>
-          <div class="sub">Audiobook App • APK Download</div>
+          <div class="sub">Audiobook App</div>
         </div>
       </a>
 
@@ -353,31 +351,29 @@
 
   <main class="container" id="top">
     <h1>Blue FM ka latest APK yahin se download karo.</h1>
-    <p class="lead">Download button touch karte hi direct APK download start ho jayega.</p>
+    <p class="lead">Download button touch karte hi APK download start ho jayega.</p>
 
     <div class="badges">
       <span class="badge" id="badgeVersion">Version: v0.1.0</span>
       <span class="badge" id="badgeUpdated">Updated: —</span>
-      <span class="badge" id="badgeSize">APK size: —</span>
+      <span class="badge" id="badgeSize">Size: —</span>
     </div>
 
     <div class="card">
       <div class="label">Download</div>
       <div class="value">Blue FM (Android APK)</div>
-      <div class="small" id="downloadStatus">Download ready.</div>
 
       <div class="cta">
         <a class="btn btn-primary" id="downloadBtn" href="#">Download APK</a>
-        <a class="btn btn-ghost" id="directLink" href="#">Direct link</a>
+        <a class="btn btn-ghost" id="directLink" href="#">Direct Link</a>
       </div>
-      <div class="small" id="linkHint"></div>
     </div>
 
     <section class="section" id="whatsnew">
-      <h2>What’s new</h2>
+      <h2>What's New</h2>
       <div class="card">
         <div class="small" id="releaseTitle">v0.1.0</div>
-        <div class="small" id="releaseNotes" style="margin-top:10px; line-height:1.55;">—</div>
+        <div class="small" id="releaseNotes" style="margin-top:10px; line-height:1.55;">Initial release</div>
       </div>
     </section>
 
@@ -393,19 +389,17 @@
 
     <section class="section" id="screens">
       <h2>Screenshots</h2>
-      <p class="small">In images ko apne real screenshots links se replace kar dena.</p>
-
       <div class="shots">
         <div class="shot">
-          <img src="https://dummyimage.com/900x1600/111b2e/a9b6d3.png&text=Screenshot+1" alt="Blue FM screenshot 1">
+          <img src="https://dummyimage.com/900x1600/111b2e/a9b6d3.png&text=Home" alt="Blue FM Home">
           <div class="cap">Home</div>
         </div>
         <div class="shot">
-          <img src="https://dummyimage.com/900x1600/111b2e/a9b6d3.png&text=Screenshot+2" alt="Blue FM screenshot 2">
+          <img src="https://dummyimage.com/900x1600/111b2e/a9b6d3.png&text=Player" alt="Blue FM Player">
           <div class="cap">Player</div>
         </div>
         <div class="shot">
-          <img src="https://dummyimage.com/900x1600/111b2e/a9b6d3.png&text=Screenshot+3" alt="Blue FM screenshot 3">
+          <img src="https://dummyimage.com/900x1600/111b2e/a9b6d3.png&text=Categories" alt="Blue FM Categories">
           <div class="cap">Categories</div>
         </div>
       </div>
@@ -415,11 +409,11 @@
       <h2>FAQ</h2>
       <details>
         <summary>Download start nahi ho raha?</summary>
-        <div>“Direct link” try karo. Same APK file hai.</div>
+        <div>"Direct Link" try karo. Same APK file hai.</div>
       </details>
       <details>
         <summary>Support kaise milega?</summary>
-        <div>WhatsApp ya Instagram button se message kar do.</div>
+        <div>WhatsApp ya Instagram button se message karo.</div>
       </details>
     </section>
 
@@ -433,139 +427,89 @@
     </footer>
   </main>
 
-  <div class="float-stack" aria-label="Support buttons">
+  <div class="float-stack">
     <a class="float-btn wa" id="waBtn" href="#" rel="noopener">WhatsApp</a>
     <a class="float-btn ig" id="igBtn" href="#" rel="noopener">Instagram</a>
   </div>
 
-  <div class="bottom-bar" role="region" aria-label="Quick download bar">
+  <div class="bottom-bar">
     <div class="bottom-inner">
       <div class="bottom-meta">
         <div class="t">Blue FM APK</div>
-        <div class="s" id="bottomSub">Tap Download</div>
+        <div class="s" id="bottomSub">v0.1.0</div>
       </div>
       <div class="bottom-actions">
-        <a class="btn-mini" id="bottomDirect" href="#" rel="noopener">Direct</a>
-        <a class="btn-mini primary" id="bottomDownload" href="#" rel="noopener">Download</a>
+        <a class="btn-mini" id="bottomDirect" href="#">Direct</a>
+        <a class="btn-mini primary" id="bottomDownload" href="#">Download</a>
       </div>
     </div>
   </div>
 
   <script>
-    /**
-     * ✅ UPDATED (your links)
-     * Repo: bluefmtts/bluefm-
-     * Release: v0.1.0
-     * Asset: app-0.1.apk
-     */
     const CONFIG = {
-      // Use LATEST (future-proof). If you want fixed v0.1.0 only, swap to downloadUrlFixed.
-      downloadUrlLatest: "https://github.com/bluefmtts/bluefm-/releases/latest/download/app-0.1.apk",
-      downloadUrlFixed:  "https://github.com/bluefmtts/bluefm-/releases/download/v0.1.0/app-0.1.apk",
-      assetFileName: "app-0.1.apk",
-
-      // Optional: release info (badges + notes)
+      downloadUrl: "https://github.com/bluefmtts/bluefm-/releases/download/v0.1.0/bluefm.apk",
+      assetFileName: "bluefm.apk",
       githubOwner: "bluefmtts",
       githubRepo: "bluefm-",
-
-      // Support
-      whatsappNumberE164: "91XXXXXXXXXX", // apna number yahan
+      whatsappNumber: "91XXXXXXXXXX",
       whatsappMessage: "Hi! Blue FM app me help chahiye.",
-      instagramProfileUrl: "https://www.instagram.com/bluefm_official?igsh=MzZnYnE0ajk1Z2xs"
+      instagramUrl: "https://www.instagram.com/bluefm_official?igsh=MzZnYnE0ajk1Z2xs"
     };
 
-    const $ = (id) => document.getElementById(id);
+    const $ = id => document.getElementById(id);
 
     function setDownloadLinks(url) {
-      const ids = ["downloadBtn", "directLink", "bottomDownload", "bottomDirect"];
-      for (const id of ids) {
-        const el = $(id);
-        el.href = url;
-        // Avoid new tab behavior
-        el.removeAttribute("target");
-      }
-      // download attr is usually ignored cross-site, but doesn't hurt
-      $("downloadBtn").setAttribute("download", CONFIG.assetFileName);
-      $("bottomDownload").setAttribute("download", CONFIG.assetFileName);
+      ["downloadBtn", "directLink", "bottomDownload", "bottomDirect"].forEach(id => {
+        $(id).href = url;
+      });
     }
 
     function initSupport() {
-      const msg = encodeURIComponent(CONFIG.whatsappMessage || "Hi!");
-      const num = String(CONFIG.whatsappNumberE164 || "").replace(/\D/g, "");
-      const waUrl = num ? `https://wa.me/${num}?text=${msg}` : `https://wa.me/?text=${msg}`;
-
+      const msg = encodeURIComponent(CONFIG.whatsappMessage);
+      const num = CONFIG.whatsappNumber.replace(/\D/g, "");
+      const waUrl = `https://wa.me/${num}?text=${msg}`;
+      
       $("waBtn").href = waUrl;
       $("waFooter").href = waUrl;
-
-      $("igBtn").href = CONFIG.instagramProfileUrl;
-      $("igFooter").href = CONFIG.instagramProfileUrl;
+      $("igBtn").href = CONFIG.instagramUrl;
+      $("igFooter").href = CONFIG.instagramUrl;
     }
 
     function formatDate(iso) {
       try {
-        const d = new Date(iso);
-        return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "2-digit" });
+        return new Date(iso).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "2-digit" });
       } catch { return "—"; }
     }
+
     function formatMB(bytes) {
-      if (!Number.isFinite(bytes)) return "—";
-      return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-    }
-    function escapeHtml(s) {
-      return String(s ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;");
-    }
-    function renderReleaseNotes(text) {
-      const safe = escapeHtml(text || "");
-      const withLinks = safe.replace(
-        /(https?:\/\/[^\s]+)/g,
-        (m) => `<a href="${m}" target="_blank" rel="noopener">${m}</a>`
-      );
-      return withLinks.replaceAll("\n", "<br>");
+      return Number.isFinite(bytes) ? `${(bytes / 1048576).toFixed(1)} MB` : "—";
     }
 
     async function loadReleaseInfo() {
-      // Always keep direct download working even if API fails
-      setDownloadLinks(CONFIG.downloadUrlLatest);
-      $("linkHint").textContent = "Direct download link set.";
-      $("bottomSub").textContent = "Tap Download to start";
-
+      setDownloadLinks(CONFIG.downloadUrl);
+      
       try {
-        const apiUrl = `https://api.github.com/repos/${CONFIG.githubOwner}/${CONFIG.githubRepo}/releases/latest`;
-        const res = await fetch(apiUrl, { headers: { "Accept": "application/vnd.github+json" } });
-        if (!res.ok) throw new Error(String(res.status));
+        const res = await fetch(`https://api.github.com/repos/${CONFIG.githubOwner}/${CONFIG.githubRepo}/releases/latest`);
+        if (!res.ok) return;
         const release = await res.json();
 
-        const tag = release.tag_name || "—";
-        const published = release.published_at ? formatDate(release.published_at) : "—";
-
-        const assets = Array.isArray(release.assets) ? release.assets : [];
-        const apk = assets.find(a => a?.name === CONFIG.assetFileName) ||
-                    assets.find(a => (a?.name || "").toLowerCase().endsWith(".apk")) ||
-                    null;
-
-        const size = apk?.size ? formatMB(apk.size) : "—";
+        const tag = release.tag_name || "v0.1.0";
+        const published = formatDate(release.published_at);
+        const apk = release.assets?.find(a => a.name === CONFIG.assetFileName);
+        const size = formatMB(apk?.size);
 
         $("badgeVersion").textContent = `Version: ${tag}`;
         $("badgeUpdated").textContent = `Updated: ${published}`;
-        $("badgeSize").textContent = `APK size: ${size}`;
+        $("badgeSize").textContent = `Size: ${size}`;
+        $("releaseTitle").textContent = release.name || tag;
+        $("releaseNotes").textContent = release.body || "Initial release";
+        $("bottomSub").textContent = `${tag} • ${size}`;
 
-        $("releaseTitle").textContent = release.name ? `${release.name} (${tag})` : tag;
-        $("releaseNotes").innerHTML = renderReleaseNotes(release.body || "—");
-
-        // If API gives exact asset URL, use it (still direct download)
         if (apk?.browser_download_url) setDownloadLinks(apk.browser_download_url);
-
-        $("bottomSub").textContent = `Latest: ${tag} • ${published} • ${size}`;
-      } catch {
-        // keep direct download
-      }
+      } catch {}
     }
 
-    // Init
-    $("year").textContent = String(new Date().getFullYear());
+    $("year").textContent = new Date().getFullYear();
     initSupport();
     loadReleaseInfo();
   </script>
