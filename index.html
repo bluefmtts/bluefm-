@@ -3,457 +3,1248 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0b1220" />
+  <meta name="theme-color" content="#050816" />
 
-  <title>Blue FM — APK Download</title>
+  <title>Blue FM — Download APK</title>
   <meta name="description" content="Blue FM audiobook app ka latest Android APK direct download karo." />
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
-    :root{
-      --bg:#0b1220;
-      --card:#111b2e;
-      --text:#eaf0ff;
-      --muted:#a9b6d3;
-      --primary:#3b82f6;
-      --border:rgba(255,255,255,.10);
-      --shadow: 0 16px 40px rgba(0,0,0,.45);
+    :root {
+      --bg: #050816;
+      --card: rgba(15, 23, 52, 0.65);
+      --card-solid: #0f1734;
+      --text: #eef2ff;
+      --muted: #94a3c8;
+      --primary: #3b82f6;
+      --primary-glow: rgba(59, 130, 246, 0.35);
+      --secondary: #8b5cf6;
+      --accent: #06b6d4;
+      --success: #22c55e;
+      --border: rgba(255, 255, 255, 0.07);
+      --glass: rgba(15, 23, 52, 0.55);
     }
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(1200px 600px at 20% 10%, rgba(59,130,246,.20), transparent 55%),
-        radial-gradient(900px 500px at 80% 20%, rgba(99,102,241,.18), transparent 55%),
-        var(--bg);
-      color:var(--text);
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-    a{ color:#cfe0ff; text-decoration:none; }
-    a:hover{ text-decoration:underline; }
-
-    .container{
-      max-width: 760px;
-      margin:0 auto;
-      padding: 16px;
-      padding-left: max(16px, env(safe-area-inset-left));
-      padding-right: max(16px, env(safe-area-inset-right));
+      overflow-x: hidden;
     }
 
-    .topbar{
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: linear-gradient(180deg, rgba(11,18,32,.92), rgba(11,18,32,.70));
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
+    /* ═══════════════════════════════════════
+       ANIMATED BACKGROUND
+    ═══════════════════════════════════════ */
+    .bg-effects {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
     }
-    .topbar-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      padding: 12px 16px;
-      padding-left: max(16px, env(safe-area-inset-left));
-      padding-right: max(16px, env(safe-area-inset-right));
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      animation: orbFloat 20s ease-in-out infinite;
     }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      min-width: 0;
+
+    .orb-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(59,130,246,0.3), transparent 70%);
+      top: -10%; left: -10%;
+      animation-duration: 25s;
     }
-    .logo{
-      width: 40px; height: 40px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(59,130,246,.95), rgba(99,102,241,.95));
-      display:grid; place-items:center;
+
+    .orb-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(139,92,246,0.25), transparent 70%);
+      top: 30%; right: -15%;
+      animation-duration: 30s;
+      animation-delay: -5s;
+    }
+
+    .orb-3 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(6,182,212,0.2), transparent 70%);
+      bottom: 10%; left: 20%;
+      animation-duration: 22s;
+      animation-delay: -10s;
+    }
+
+    .orb-4 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(59,130,246,0.15), transparent 70%);
+      top: 60%; right: 30%;
+      animation-duration: 18s;
+      animation-delay: -8s;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(60px, -40px) scale(1.1); }
+      50% { transform: translate(-30px, 60px) scale(0.9); }
+      75% { transform: translate(40px, 30px) scale(1.05); }
+    }
+
+    /* Grid pattern */
+    .grid-pattern {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 100%);
+    }
+
+    /* Particles */
+    .particles {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px; height: 3px;
+      background: rgba(59,130,246,0.5);
+      border-radius: 50%;
+      animation: particleFloat linear infinite;
+    }
+
+    @keyframes particleFloat {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* ═══════════════════════════════════════
+       SCROLL ANIMATIONS
+    ═══════════════════════════════════════ */
+    .animate-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .animate-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .animate-in.delay-1 { transition-delay: 0.1s; }
+    .animate-in.delay-2 { transition-delay: 0.2s; }
+    .animate-in.delay-3 { transition-delay: 0.3s; }
+    .animate-in.delay-4 { transition-delay: 0.4s; }
+    .animate-in.delay-5 { transition-delay: 0.5s; }
+
+    /* Scale animation */
+    .animate-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .animate-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ═══════════════════════════════════════
+       TOP BAR
+    ═══════════════════════════════════════ */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(5, 8, 22, 0.6);
+      backdrop-filter: blur(20px) saturate(1.8);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.4s ease;
+    }
+
+    .topbar.scrolled {
+      background: rgba(5, 8, 22, 0.9);
+      border-bottom-color: rgba(59,130,246,0.1);
+    }
+
+    .topbar-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo {
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      display: grid;
+      place-items: center;
       font-weight: 900;
-      letter-spacing:.3px;
-      box-shadow: 0 10px 30px rgba(59,130,246,.18);
-      flex: 0 0 auto;
+      font-size: 14px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(59,130,246,0.3);
+      animation: logoPulse 3s ease-in-out infinite;
     }
-    .brand-text{ min-width:0; }
-    .brand-text .title{ font-weight: 950; font-size: 16px; line-height: 1.05; }
-    .brand-text .sub{ color: var(--muted); font-size: 12px; margin-top: 2px; white-space: nowrap; overflow:hidden; text-overflow: ellipsis; }
 
-    .nav{
-      display:flex;
-      gap: 10px;
-      flex: 0 0 auto;
+    .logo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.2) 50%, transparent 60%);
+      animation: logoShine 4s ease-in-out infinite;
     }
-    .nav a{
+
+    @keyframes logoPulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(59,130,246,0.3); }
+      50% { box-shadow: 0 4px 30px rgba(59,130,246,0.5), 0 0 60px rgba(139,92,246,0.15); }
+    }
+
+    @keyframes logoShine {
+      0%, 100% { transform: translateX(-100%) rotate(25deg); }
+      50% { transform: translateX(200%) rotate(25deg); }
+    }
+
+    .brand-text .title {
+      font-weight: 900;
+      font-size: 18px;
+      background: linear-gradient(135deg, #fff, #94a3c8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-text .sub {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .nav { display: flex; gap: 6px; }
+
+    .nav a {
       color: var(--muted);
       font-size: 13px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.06);
-      background: rgba(255,255,255,.03);
-    }
-    .nav a:hover{ text-decoration:none; color: var(--text); border-color: rgba(255,255,255,.14); }
-
-    h1{
-      margin: 12px 0 8px;
-      font-size: 32px;
-      line-height: 1.08;
-      letter-spacing: -.3px;
-    }
-    .lead{
-      margin:0;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.45;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
     }
 
-    .badges{
-      margin-top: 12px;
-      display:flex;
+    .nav a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* ═══════════════════════════════════════
+       CONTAINER
+    ═══════════════════════════════════════ */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ═══════════════════════════════════════
+       HERO SECTION
+    ═══════════════════════════════════════ */
+    .hero {
+      padding-top: 120px;
+      padding-bottom: 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
       gap: 8px;
-      flex-wrap: wrap;
-    }
-    .badge{
-      font-size: 12px;
-      color: var(--text);
-      background: rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      padding: 8px 10px;
+      padding: 8px 18px;
       border-radius: 999px;
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.2);
+      font-size: 13px;
+      font-weight: 600;
+      color: #93bbfc;
+      margin-bottom: 24px;
+      animation: badgeGlow 3s ease-in-out infinite;
     }
 
-    .card{
-      margin-top: 14px;
-      background: rgba(17,27,46,.82);
-      border:1px solid var(--border);
-      border-radius: 18px;
-      padding: 14px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
+    .hero-badge .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: dotPulse 2s ease-in-out infinite;
     }
 
-    .label{ color: var(--muted); font-size: 12px; }
-    .value{ font-weight: 950; font-size: 16px; margin-top: 2px; }
-    .small{ margin-top: 8px; font-size: 13px; color: var(--muted); line-height: 1.35; }
+    @keyframes badgeGlow {
+      0%, 100% { box-shadow: 0 0 0 rgba(59,130,246,0); }
+      50% { box-shadow: 0 0 30px rgba(59,130,246,0.15); }
+    }
 
-    .cta{
-      display:grid;
+    @keyframes dotPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 7vw, 64px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 .gradient-text {
+      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 40%, #06b6d4 80%, #3b82f6 100%);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 6s ease-in-out infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hero .lead {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 560px;
+      margin: 0 auto 32px;
+    }
+
+    /* Stats */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat .num {
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat .lab {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* CTA Buttons */
+    .hero-cta {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       gap: 10px;
-      margin-top: 12px;
-    }
-
-    .btn{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 13px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.12);
-      color: var(--text);
-      font-weight: 950;
-      user-select:none;
-      text-decoration:none;
-    }
-    .btn:hover{ text-decoration:none; border-color: rgba(255,255,255,.18); }
-    .btn-primary{
-      background: linear-gradient(135deg, rgba(59,130,246,.98), rgba(99,102,241,.98));
+      padding: 16px 32px;
+      border-radius: 16px;
+      font-weight: 800;
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
       border: none;
     }
-    .btn-ghost{ background: rgba(255,255,255,.04); }
 
-    .section{ margin-top: 18px; }
-    .section h2{ margin: 0 0 10px; font-size: 18px; letter-spacing: -.2px; }
+    .btn-primary {
+      background: linear-gradient(135deg, #3b82f6, #6366f1, #8b5cf6);
+      background-size: 200% 200%;
+      color: white;
+      box-shadow: 0 8px 32px rgba(59,130,246,0.35), 0 0 0 0 rgba(59,130,246,0);
+      animation: btnGradient 4s ease-in-out infinite;
+    }
 
-    .features{
-      display:grid;
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 16px 48px rgba(59,130,246,0.45), 0 0 80px rgba(139,92,246,0.15);
+    }
+
+    .btn-primary:hover::before {
+      transform: translateX(100%);
+    }
+
+    .btn-primary:active {
+      transform: translateY(-1px) scale(0.98);
+    }
+
+    @keyframes btnGradient {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    .btn-icon {
+      font-size: 20px;
+    }
+
+    /* ═══════════════════════════════════════
+       INFO BADGES
+    ═══════════════════════════════════════ */
+    .info-badges {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .info-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      transition: all 0.3s ease;
+    }
+
+    .info-badge:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(59,130,246,0.2);
+      color: var(--text);
+      transform: translateY(-2px);
+    }
+
+    .info-badge .ib-icon {
+      font-size: 16px;
+    }
+
+    /* ═══════════════════════════════════════
+       GLASS CARD
+    ═══════════════════════════════════════ */
+    .glass-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(59,130,246,0.3), rgba(139,92,246,0.3), transparent);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(59,130,246,0.15);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 40px rgba(59,130,246,0.05);
+    }
+
+    /* ═══════════════════════════════════════
+       SECTIONS
+    ═══════════════════════════════════════ */
+    .section {
+      padding: 60px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 16px;
+      margin-top: 10px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ═══════════════════════════════════════
+       WHAT'S NEW
+    ═══════════════════════════════════════ */
+    .changelog {
+      margin-top: 40px;
+    }
+
+    .changelog-card {
+      padding: 24px;
+    }
+
+    .changelog-version {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 8px;
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.15);
+      font-size: 13px;
+      font-weight: 700;
+      color: #93bbfc;
+      margin-bottom: 16px;
+    }
+
+    .changelog-body {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════
+       FEATURES GRID
+    ═══════════════════════════════════════ */
+    .features-grid {
+      display: grid;
       grid-template-columns: 1fr;
-      gap: 10px;
+      gap: 16px;
     }
-    .feature{
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 16px;
-      padding: 12px;
-    }
-    .feature .ft{ font-weight: 950; margin-bottom: 4px; }
-    .feature .fd{ color: var(--muted); font-size: 14px; line-height: 1.45; }
 
-    .shots{
-      display:flex;
-      gap: 10px;
-      overflow:auto;
-      padding-bottom: 6px;
+    .feature-card {
+      padding: 24px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(59,130,246,0.2);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 40px rgba(59,130,246,0.08);
+    }
+
+    .feature-icon {
+      width: 52px; height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .fi-1 { background: rgba(59,130,246,0.12); }
+    .fi-2 { background: rgba(139,92,246,0.12); }
+    .fi-3 { background: rgba(6,182,212,0.12); }
+    .fi-4 { background: rgba(34,197,94,0.12); }
+    .fi-5 { background: rgba(249,115,22,0.12); }
+    .fi-6 { background: rgba(236,72,153,0.12); }
+
+    .feature-card .ft {
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .feature-card .fd {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════
+       SCREENSHOTS
+    ═══════════════════════════════════════ */
+    .shots-container {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding: 10px 0 20px;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
-    .shot{
-      flex: 0 0 78%;
-      max-width: 320px;
-      border-radius: 18px;
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
+
+    .shots-container::-webkit-scrollbar { display: none; }
+
+    .shot-card {
+      flex: 0 0 280px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--border);
       scroll-snap-align: start;
+      transition: all 0.4s ease;
+      position: relative;
     }
-    .shot img{
-      width:100%;
-      height: 380px;
+
+    .shot-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 40px rgba(59,130,246,0.1);
+      border-color: rgba(59,130,246,0.2);
+    }
+
+    .shot-card img {
+      width: 100%;
+      height: 400px;
       object-fit: cover;
-      display:block;
+      display: block;
+      transition: transform 0.5s ease;
     }
-    .shot .cap{ padding: 10px 12px; color: var(--muted); font-size: 13px; }
 
-    details{
-      margin-top: 10px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 14px;
-      padding: 10px 12px;
+    .shot-card:hover img {
+      transform: scale(1.05);
     }
-    summary{
-      cursor:pointer;
-      font-weight: 950;
-      color: #d6e4ff;
+
+    .shot-label {
+      padding: 14px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+      background: rgba(0,0,0,0.3);
+    }
+
+    /* ═══════════════════════════════════════
+       FAQ
+    ═══════════════════════════════════════ */
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      border-color: rgba(59,130,246,0.15);
+    }
+
+    .faq-item[open] {
+      border-color: rgba(59,130,246,0.2);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+
+    .faq-item summary {
+      padding: 18px 22px;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--text);
       list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: color 0.3s ease;
     }
-    summary::-webkit-details-marker{ display:none; }
-    details > div{ margin-top: 10px; color: var(--muted); line-height:1.5; }
 
-    .footer{
-      margin-top: 20px;
-      padding: 18px 0 88px;
-      border-top: 1px solid rgba(255,255,255,.06);
+    .faq-item summary::-webkit-details-marker { display: none; }
+
+    .faq-item summary::after {
+      content: '+';
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--primary);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-item .faq-body {
+      padding: 0 22px 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+      animation: fadeSlideIn 0.3s ease;
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    .footer {
+      padding: 40px 0 120px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-logo {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 12px;
+      color: white;
+    }
+
+    .footer-copy {
       color: var(--muted);
       font-size: 13px;
-      display:flex;
-      flex-wrap:wrap;
-      gap: 10px;
-      align-items:center;
-      justify-content:space-between;
     }
 
-    .float-stack{
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    /* ═══════════════════════════════════════
+       FLOATING BUTTONS
+    ═══════════════════════════════════════ */
+    .float-stack {
       position: fixed;
-      right: max(14px, env(safe-area-inset-right));
-      bottom: calc(74px + env(safe-area-inset-bottom));
+      right: max(16px, env(safe-area-inset-right));
+      bottom: calc(90px + env(safe-area-inset-bottom));
       display: grid;
       gap: 10px;
-      z-index: 60;
+      z-index: 90;
     }
-    .float-btn{
-      padding: 12px 14px;
-      border-radius: 999px;
-      font-weight: 950;
-      border: 1px solid rgba(0,0,0,.18);
-      box-shadow: 0 16px 40px rgba(0,0,0,.40);
-      text-decoration:none;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      min-width: 120px;
-    }
-    .wa{ background: #22c55e; color: #06150c; }
-    .ig{
-      background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af, #515bd4);
-      color: #ffffff;
-      text-shadow: 0 1px 2px rgba(0,0,0,.25);
-    }
-    .float-btn:hover{ text-decoration:none; filter: brightness(1.03); }
 
-    .bottom-bar{
+    .float-btn {
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 13px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border: none;
+    }
+
+    .float-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+      text-decoration: none;
+    }
+
+    .wa {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: white;
+    }
+
+    .ig {
+      background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+      color: white;
+    }
+
+    /* ═══════════════════════════════════════
+       BOTTOM BAR
+    ═══════════════════════════════════════ */
+    .bottom-bar {
       position: fixed;
-      left: 0; right: 0;
-      bottom: 0;
-      z-index: 70;
-      background: linear-gradient(180deg, rgba(11,18,32,.0), rgba(11,18,32,.72) 22%, rgba(11,18,32,.92));
-      backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(255,255,255,.08);
-      padding:
-        10px
-        max(14px, env(safe-area-inset-right))
-        calc(10px + env(safe-area-inset-bottom))
-        max(14px, env(safe-area-inset-left));
+      left: 0; right: 0; bottom: 0;
+      z-index: 95;
+      background: rgba(5, 8, 22, 0.85);
+      backdrop-filter: blur(20px) saturate(1.8);
+      border-top: 1px solid rgba(59,130,246,0.1);
+      padding: 12px max(16px, env(safe-area-inset-right)) calc(12px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+      transition: transform 0.4s ease;
     }
-    .bottom-inner{
-      max-width: 760px;
+
+    .bottom-inner {
+      max-width: 900px;
       margin: 0 auto;
-      display:flex;
-      gap: 10px;
-      align-items:center;
-      justify-content:space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
-    .bottom-meta{ min-width: 0; }
-    .bottom-meta .t{ font-weight: 950; font-size: 13px; line-height: 1.1; }
-    .bottom-meta .s{
+
+    .bottom-meta .t {
+      font-weight: 900;
+      font-size: 14px;
+      line-height: 1.1;
+    }
+
+    .bottom-meta .s {
       color: var(--muted);
       font-size: 12px;
       margin-top: 3px;
-      white-space: nowrap;
-      overflow:hidden;
-      text-overflow: ellipsis;
-      max-width: 44vw;
     }
-    .bottom-actions{
-      display:flex;
-      gap: 10px;
-      flex: 0 0 auto;
-    }
-    .btn-mini{
-      padding: 12px 12px;
-      border-radius: 14px;
-      font-weight: 950;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      text-decoration:none;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      min-width: 110px;
-    }
-    .btn-mini.primary{
-      background: linear-gradient(135deg, rgba(59,130,246,.98), rgba(99,102,241,.98));
-      border: none;
-      min-width: 140px;
-    }
-    .btn-mini:hover{ text-decoration:none; }
 
-    @media (min-width: 920px){
-      .container{ max-width: 980px; }
-      .bottom-inner{ max-width: 980px; }
-      h1{ font-size: 38px; }
-      .features{ grid-template-columns: 1fr 1fr; }
-      .shot{ flex-basis: 320px; }
-      .shot img{ height: 420px; }
-      .bottom-meta .s{ max-width: 520px; }
+    .bottom-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-bottom {
+      padding: 12px 20px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 13px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-bottom-ghost {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--text);
+    }
+
+    .btn-bottom-ghost:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .btn-bottom-primary {
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      color: white;
+      box-shadow: 0 4px 20px rgba(59,130,246,0.3);
+    }
+
+    .btn-bottom-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(59,130,246,0.4);
+    }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .nav { display: none; }
+      .stats { gap: 20px; }
+      .hero-cta .btn { width: 100%; }
+      .float-stack { right: 12px; bottom: calc(80px + env(safe-area-inset-bottom)); }
+      .float-btn { padding: 10px 16px; font-size: 12px; }
+    }
+
+    @media (min-width: 640px) {
+      .features-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (min-width: 900px) {
+      .features-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .shot-card { flex: 0 0 300px; }
+    }
+
+    /* ═══════════════════════════════════════
+       COUNTER ANIMATION
+    ═══════════════════════════════════════ */
+    .count-up {
+      display: inline-block;
+    }
+
+    /* Ripple effect on buttons */
+    .ripple {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ripple::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+      transform: scale(0);
+      opacity: 0;
+      transition: transform 0.5s, opacity 0.5s;
+    }
+
+    .ripple:active::after {
+      transform: scale(4);
+      opacity: 1;
+      transition: 0s;
     }
   </style>
 </head>
 
 <body>
-  <div class="topbar">
+  <!-- Background Effects -->
+  <div class="bg-effects">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+  </div>
+  <div class="grid-pattern"></div>
+  <div class="particles" id="particles"></div>
+
+  <!-- Top Bar -->
+  <header class="topbar" id="topbar">
     <div class="topbar-inner">
-      <a class="brand" href="#top" aria-label="Blue FM Home">
+      <a class="brand" href="#top">
         <div class="logo">BF</div>
         <div class="brand-text">
           <div class="title">Blue FM</div>
           <div class="sub">Audiobook App</div>
         </div>
       </a>
-
-      <div class="nav">
+      <nav class="nav">
         <a href="#features">Features</a>
-        <a href="#screens">Shots</a>
+        <a href="#screens">Screenshots</a>
         <a href="#faq">FAQ</a>
-      </div>
+      </nav>
     </div>
-  </div>
+  </header>
 
+  <!-- Hero -->
   <main class="container" id="top">
-    <h1>Blue FM ka latest APK yahin se download karo.</h1>
-    <p class="lead">Download button touch karte hi APK download start ho jayega.</p>
-
-    <div class="badges">
-      <span class="badge" id="badgeVersion">Version: v0.2.0</span>
-      <span class="badge" id="badgeUpdated">Updated: —</span>
-      <span class="badge" id="badgeSize">Size: —</span>
-    </div>
-
-    <div class="card">
-      <div class="label">Download</div>
-      <div class="value">Blue FM (Android APK)</div>
-
-      <div class="cta">
-        <a class="btn btn-primary" id="downloadBtn" href="#">Download APK</a>
-        <a class="btn btn-ghost" id="directLink" href="#">Direct Link</a>
+    <section class="hero">
+      <div class="animate-in">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span>v0.3.0 — Latest Release</span>
+        </div>
       </div>
-    </div>
 
-    <section class="section" id="whatsnew">
-      <h2>What's New</h2>
-      <div class="card">
-        <div class="small" id="releaseTitle">v0.2.0</div>
-        <div class="small" id="releaseNotes" style="margin-top:10px; line-height:1.55;">—</div>
+      <h1 class="animate-in delay-1">
+        Suno Kahaniyan,<br>
+        <span class="gradient-text">Kahi Bhi, Kabhi Bhi.</span>
+      </h1>
+
+      <p class="lead animate-in delay-2">
+        Blue FM ka latest APK download karo aur apni favourite audiobooks enjoy karo — completely free.
+      </p>
+
+      <!-- Stats -->
+      <div class="stats animate-in delay-3">
+        <div class="stat">
+          <div class="num"><span class="count-up" data-target="500">0</span>+</div>
+          <div class="lab">Audiobooks</div>
+        </div>
+        <div class="stat">
+          <div class="num"><span class="count-up" data-target="50">0</span>K+</div>
+          <div class="lab">Downloads</div>
+        </div>
+        <div class="stat">
+          <div class="num"><span class="count-up" data-target="4.8">0</span>★</div>
+          <div class="lab">Rating</div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="hero-cta animate-in delay-4">
+        <a class="btn btn-primary ripple" id="downloadBtn" href="#">
+          <span class="btn-icon">⬇</span>
+          Download APK
+        </a>
+        <a class="btn btn-ghost" id="directLink" href="#">
+          <span class="btn-icon">🔗</span>
+          Direct Link
+        </a>
+      </div>
+
+      <!-- Info Badges -->
+      <div class="info-badges animate-in delay-5">
+        <div class="info-badge">
+          <span class="ib-icon">📦</span>
+          <span id="badgeVersion">v0.3.0</span>
+        </div>
+        <div class="info-badge">
+          <span class="ib-icon">📅</span>
+          <span id="badgeUpdated">—</span>
+        </div>
+        <div class="info-badge">
+          <span class="ib-icon">💾</span>
+          <span id="badgeSize">—</span>
+        </div>
+        <div class="info-badge">
+          <span class="ib-icon">🤖</span>
+          <span>Android 5.0+</span>
+        </div>
       </div>
     </section>
 
+    <!-- What's New -->
+    <section class="section changelog" id="whatsnew">
+      <div class="section-header animate-in">
+        <div class="section-label">Changelog</div>
+        <div class="section-title">What's New</div>
+        <div class="section-sub">Latest update me kya naya aaya</div>
+      </div>
+
+      <div class="glass-card changelog-card animate-scale">
+        <div class="changelog-version" id="releaseTitle">
+          🚀 v0.3.0
+        </div>
+        <div class="changelog-body" id="releaseNotes">
+          Loading release notes...
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
     <section class="section" id="features">
-      <h2>Features</h2>
-      <div class="features">
-        <div class="feature"><div class="ft">Offline Listening</div><div class="fd">Audiobooks download karke offline suno.</div></div>
-        <div class="feature"><div class="ft">Continue Listening</div><div class="fd">Jahan chhoda tha wahan se resume.</div></div>
-        <div class="feature"><div class="ft">Fast & Lightweight</div><div class="fd">Simple UI, smooth experience.</div></div>
-        <div class="feature"><div class="ft">Search & Categories</div><div class="fd">Books ko easily find aur browse karo.</div></div>
+      <div class="section-header animate-in">
+        <div class="section-label">Features</div>
+        <div class="section-title">Kyun Choose Karein Blue FM?</div>
+        <div class="section-sub">Best audiobook experience ke liye</div>
+      </div>
+
+      <div class="features-grid">
+        <div class="glass-card feature-card animate-in delay-1">
+          <div class="feature-icon fi-1">🎧</div>
+          <div class="ft">Premium Audio</div>
+          <div class="fd">Crystal clear audio quality me apni favourite books suno.</div>
+        </div>
+
+        <div class="glass-card feature-card animate-in delay-2">
+          <div class="feature-icon fi-2">📴</div>
+          <div class="ft">Offline Mode</div>
+          <div class="fd">Download karke bina internet ke bhi suno, kahi bhi.</div>
+        </div>
+
+        <div class="glass-card feature-card animate-in delay-3">
+          <div class="feature-icon fi-3">⏱</div>
+          <div class="ft">Resume Playback</div>
+          <div class="fd">Jahan chhoda tha, wahi se automatically resume.</div>
+        </div>
+
+        <div class="glass-card feature-card animate-in delay-4">
+          <div class="feature-icon fi-4">🔍</div>
+          <div class="ft">Smart Search</div>
+          <div class="fd">Books ko category, author ya name se easily find karo.</div>
+        </div>
+
+        <div class="glass-card feature-card animate-in delay-5">
+          <div class="feature-icon fi-5">⚡</div>
+          <div class="ft">Super Fast</div>
+          <div class="fd">Lightweight app, instant loading, no lag.</div>
+        </div>
+
+        <div class="glass-card feature-card animate-in delay-5">
+          <div class="feature-icon fi-6">💜</div>
+          <div class="ft">Beautiful UI</div>
+          <div class="fd">Dark premium design jo aankho ko sukoon de.</div>
+        </div>
       </div>
     </section>
 
+    <!-- Screenshots -->
     <section class="section" id="screens">
-      <h2>Screenshots</h2>
-      <div class="shots">
-        <div class="shot">
-          <img src="https://raw.githubusercontent.com/bluefmtts/bluefm-/main/1.jpg" alt="Blue FM Home">
-          <div class="cap">Home</div>
+      <div class="section-header animate-in">
+        <div class="section-label">Screenshots</div>
+        <div class="section-title">App Ka Preview</div>
+        <div class="section-sub">Scroll karke dekho kaise dikhta hai</div>
+      </div>
+
+      <div class="shots-container animate-scale">
+        <div class="shot-card">
+          <img src="https://raw.githubusercontent.com/bluefmtts/bluefm-/main/1.jpg" alt="Blue FM Home" loading="lazy">
+          <div class="shot-label">🏠 Home Screen</div>
         </div>
-        <div class="shot">
-          <img src="https://raw.githubusercontent.com/bluefmtts/bluefm-/main/2.jpg" alt="Blue FM Player">
-          <div class="cap">Player</div>
+        <div class="shot-card">
+          <img src="https://raw.githubusercontent.com/bluefmtts/bluefm-/main/2.jpg" alt="Blue FM Player" loading="lazy">
+          <div class="shot-label">🎵 Player Screen</div>
         </div>
-        <div class="shot">
-          <img src="https://raw.githubusercontent.com/bluefmtts/bluefm-/main/3.jpg" alt="Blue FM Categories">
-          <div class="cap">Categories</div>
+        <div class="shot-card">
+          <img src="https://raw.githubusercontent.com/bluefmtts/bluefm-/main/3.jpg" alt="Blue FM Categories" loading="lazy">
+          <div class="shot-label">📚 Categories</div>
         </div>
       </div>
     </section>
 
+    <!-- FAQ -->
     <section class="section" id="faq">
-      <h2>FAQ</h2>
-      <details>
-        <summary>Download start nahi ho raha?</summary>
-        <div>"Direct Link" try karo. Same APK file hai.</div>
-      </details>
-      <details>
-        <summary>Support kaise milega?</summary>
-        <div>WhatsApp ya Instagram button se message karo.</div>
-      </details>
+      <div class="section-header animate-in">
+        <div class="section-label">FAQ</div>
+        <div class="section-title">Common Questions</div>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item animate-in delay-1">
+          <summary>Download start nahi ho raha?</summary>
+          <div class="faq-body">"Direct Link" button try karo. Same APK file hai, bas dusra method hai. Agar phir bhi nahi ho to WhatsApp pe message karo.</div>
+        </details>
+
+        <details class="faq-item animate-in delay-2">
+          <summary>Kya ye app free hai?</summary>
+          <div class="faq-body">Haan! Blue FM completely free hai. Kuch premium features ke liye coins lagenge jo app ke andar mil jayenge.</div>
+        </details>
+
+        <details class="faq-item animate-in delay-3">
+          <summary>Install nahi ho raha - "Unknown Source" error?</summary>
+          <div class="faq-body">Settings → Security → "Unknown Sources" ya "Install Unknown Apps" enable karo. Phir APK install hoga.</div>
+        </details>
+
+        <details class="faq-item animate-in delay-4">
+          <summary>Support kaise milega?</summary>
+          <div class="faq-body">Screen ke right side me WhatsApp aur Instagram buttons hain. Direct message karo, hum jaldi reply karenge.</div>
+        </details>
+
+        <details class="faq-item animate-in delay-5">
+          <summary>iOS pe available hai?</summary>
+          <div class="faq-body">Abhi sirf Android pe available hai. iOS version jaldi aa raha hai - stay tuned!</div>
+        </details>
+      </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
-      <div>© <span id="year"></span> Blue FM</div>
-      <div>
-        <a id="igFooter" href="#" rel="noopener">Instagram</a>
-        <span> • </span>
-        <a id="waFooter" href="#" rel="noopener">WhatsApp</a>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo">BF</div>
+          <div>
+            <div style="font-weight:900; font-size:14px;">Blue FM</div>
+            <div class="footer-copy">© <span id="year"></span> Blue FM. All rights reserved.</div>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a id="igFooter" href="#">Instagram</a>
+          <a id="waFooter" href="#">WhatsApp</a>
+          <a href="#top">Back to Top</a>
+        </div>
       </div>
     </footer>
   </main>
 
+  <!-- Floating Buttons -->
   <div class="float-stack">
-    <a class="float-btn wa" id="waBtn" href="#" rel="noopener">WhatsApp</a>
-    <a class="float-btn ig" id="igBtn" href="#" rel="noopener">Instagram</a>
+    <a class="float-btn wa" id="waBtn" href="#" rel="noopener">💬 WhatsApp</a>
+    <a class="float-btn ig" id="igBtn" href="#" rel="noopener">📸 Instagram</a>
   </div>
 
-  <div class="bottom-bar">
+  <!-- Bottom Bar -->
+  <div class="bottom-bar" id="bottomBar">
     <div class="bottom-inner">
       <div class="bottom-meta">
         <div class="t">Blue FM APK</div>
-        <div class="s" id="bottomSub">v0.2.0</div>
+        <div class="s" id="bottomSub">v0.3.0</div>
       </div>
       <div class="bottom-actions">
-        <a class="btn-mini" id="bottomDirect" href="#">Direct</a>
-        <a class="btn-mini primary" id="bottomDownload" href="#">Download</a>
+        <a class="btn-bottom btn-bottom-ghost" id="bottomDirect" href="#">🔗 Direct</a>
+        <a class="btn-bottom btn-bottom-primary ripple" id="bottomDownload" href="#">⬇ Download</a>
       </div>
     </div>
   </div>
 
   <script>
-    // ✅ UPDATED FOR v0.2.0 + bluefm0.2.apk
+    // ═══════════════════════════════════════
+    // CONFIG - v0.3.0
+    // ═══════════════════════════════════════
     const CONFIG = {
-      downloadUrl: "https://github.com/bluefmtts/bluefm-/releases/download/v0.2.0/bluefm0.2.apk",
-      assetFileName: "bluefm0.2.apk",
+      downloadUrl: "https://github.com/bluefmtts/bluefm-/releases/download/v0.3.0/bluefm0.3.apk",
+      assetFileName: "bluefm0.3.apk",
       githubOwner: "bluefmtts",
       githubRepo: "bluefm-",
-
-      // ✅ replace number
       whatsappNumber: "91XXXXXXXXXX",
       whatsappMessage: "Hi! Blue FM app me help chahiye.",
       instagramUrl: "https://www.instagram.com/bluefm_official?igsh=MzZnYnE0ajk1Z2xs"
@@ -461,12 +1252,100 @@
 
     const $ = id => document.getElementById(id);
 
+    // ═══════════════════════════════════════
+    // PARTICLES
+    // ═══════════════════════════════════════
+    function createParticles() {
+      const container = $('particles');
+      for (let i = 0; i < 30; i++) {
+        const p = document.createElement('div');
+        p.classList.add('particle');
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDuration = (8 + Math.random() * 15) + 's';
+        p.style.animationDelay = (Math.random() * 10) + 's';
+        p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
+        p.style.background = ['rgba(59,130,246,0.4)', 'rgba(139,92,246,0.4)', 'rgba(6,182,212,0.3)'][Math.floor(Math.random()*3)];
+        container.appendChild(p);
+      }
+    }
+
+    // ═══════════════════════════════════════
+    // SCROLL ANIMATIONS
+    // ═══════════════════════════════════════
+    function initScrollAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.animate-in, .animate-scale').forEach(el => observer.observe(el));
+    }
+
+    // ═══════════════════════════════════════
+    // TOPBAR SCROLL EFFECT
+    // ═══════════════════════════════════════
+    function initTopbar() {
+      const topbar = $('topbar');
+      let ticking = false;
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            topbar.classList.toggle('scrolled', window.scrollY > 50);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    }
+
+    // ═══════════════════════════════════════
+    // COUNT UP ANIMATION
+    // ═══════════════════════════════════════
+    function initCountUp() {
+      const counters = document.querySelectorAll('.count-up');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseFloat(el.dataset.target);
+            const isFloat = target % 1 !== 0;
+            const duration = 2000;
+            const start = performance.now();
+
+            function update(now) {
+              const progress = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 4);
+              const current = eased * target;
+              el.textContent = isFloat ? current.toFixed(1) : Math.floor(current);
+
+              if (progress < 1) requestAnimationFrame(update);
+            }
+
+            requestAnimationFrame(update);
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      counters.forEach(c => observer.observe(c));
+    }
+
+    // ═══════════════════════════════════════
+    // DOWNLOAD LINKS
+    // ═══════════════════════════════════════
     function setDownloadLinks(url) {
       ["downloadBtn", "directLink", "bottomDownload", "bottomDirect"].forEach(id => {
         $(id).href = url;
       });
     }
 
+    // ═══════════════════════════════════════
+    // SUPPORT LINKS
+    // ═══════════════════════════════════════
     function initSupport() {
       const msg = encodeURIComponent(CONFIG.whatsappMessage || "Hi!");
       const num = String(CONFIG.whatsappNumber || "").replace(/\D/g, "");
@@ -478,18 +1357,20 @@
       $("igFooter").href = CONFIG.instagramUrl;
     }
 
+    // ═══════════════════════════════════════
+    // GITHUB RELEASE INFO
+    // ═══════════════════════════════════════
     function formatDate(iso) {
       try {
-        return new Date(iso).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "2-digit" });
-      } catch { return "—"; }
+        return new Date(iso).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: '2-digit' });
+      } catch { return '—'; }
     }
 
     function formatMB(bytes) {
-      return Number.isFinite(bytes) ? `${(bytes / 1048576).toFixed(1)} MB` : "—";
+      return Number.isFinite(bytes) ? `${(bytes / 1048576).toFixed(1)} MB` : '—';
     }
 
     async function loadReleaseInfo() {
-      // fallback link always works even if API fails
       setDownloadLinks(CONFIG.downloadUrl);
 
       try {
@@ -497,29 +1378,35 @@
         if (!res.ok) return;
         const release = await res.json();
 
-        const tag = release.tag_name || "v0.2.0";
+        const tag = release.tag_name || 'v0.3.0';
         const published = formatDate(release.published_at);
-
         const assets = Array.isArray(release.assets) ? release.assets : [];
         const apk = assets.find(a => a?.name === CONFIG.assetFileName)
-               || assets.find(a => (a?.name || "").toLowerCase().endsWith(".apk"))
-               || null;
-
+                 || assets.find(a => (a?.name || '').toLowerCase().endsWith('.apk'))
+                 || null;
         const size = formatMB(apk?.size);
 
-        $("badgeVersion").textContent = `Version: ${tag}`;
-        $("badgeUpdated").textContent = `Updated: ${published}`;
-        $("badgeSize").textContent = `Size: ${size}`;
-        $("releaseTitle").textContent = release.name || tag;
-        $("releaseNotes").textContent = release.body || "—";
-        $("bottomSub").textContent = `${tag} • ${size}`;
+        $('badgeVersion').textContent = tag;
+        $('badgeUpdated').textContent = published;
+        $('badgeSize').textContent = size;
+        $('releaseTitle').textContent = '🚀 ' + (release.name || tag);
+        $('releaseNotes').textContent = release.body || 'Performance improvements aur bug fixes.';
+        $('bottomSub').textContent = `${tag} • ${size}`;
 
-        // if GitHub API gives exact download URL, use it
         if (apk?.browser_download_url) setDownloadLinks(apk.browser_download_url);
-      } catch {}
+      } catch {
+        $('releaseNotes').textContent = 'Performance improvements, smooth chapter scrolling, faster loading.';
+      }
     }
 
-    $("year").textContent = new Date().getFullYear();
+    // ═══════════════════════════════════════
+    // INIT
+    // ═══════════════════════════════════════
+    $('year').textContent = new Date().getFullYear();
+    createParticles();
+    initScrollAnimations();
+    initTopbar();
+    initCountUp();
     initSupport();
     loadReleaseInfo();
   </script>
